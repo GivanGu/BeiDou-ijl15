@@ -69,34 +69,68 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 		if (reader.ParseError() == 0) {
 			Client::m_nGameWidth = reader.GetInteger("general", "width", 1280);
 			Client::m_nGameHeight = reader.GetInteger("general", "height", 720);
-			Client::MsgAmount = reader.GetInteger("general", "MsgAmount", 26);
-			Client::CustomLoginFrame = reader.GetBoolean("general", "CustomLoginFrame", true);
-			Client::WindowedMode = reader.GetBoolean("general", "WindowedMode", true);
-			Client::RemoveLogos = reader.GetBoolean("general", "RemoveLogos", true);
-			Memory::UseVirtuProtect = reader.GetBoolean("general", "UseVirtuProtect", true);
-			Client::setDamageCap = static_cast<int>(reader.GetReal("optional", "setDamageCap", 199999));
-			Client::setMAtkCap = static_cast<int>(reader.GetReal("optional", "setMAtkCap", 1999));
-			Client::setAccCap = static_cast<int>(reader.GetReal("optional", "setAccCap", 999));
-			Client::setAvdCap = static_cast<int>(reader.GetReal("optional", "setAvdCap", 999));
-			Client::setAtkOutCap = reader.GetReal("optional", "setAtkOutCap", 199999);
-			Client::useTubi = reader.GetBoolean("optional", "useTubi", false);
-			Client::bigLoginFrame = reader.GetBoolean("general", "bigLoginFrame", false);
-			Client::SwitchChinese = reader.GetBoolean("general", "SwitchChinese", false);
-			Client::speedMovementCap = reader.GetInteger("optional", "speedMovementCap", 140);
-			Client::jumpCap = reader.GetInteger("optional", "jumpCap", 123);
-			Client::debug = reader.GetBoolean("debug", "debug", false);
-			Client::noPassword = reader.GetBoolean("debug", "noPassword", false);
-			Client::imeType = static_cast<unsigned char>(reader.GetInteger("general", "imeType", 1));
-			ownLoginFrame = reader.GetBoolean("optional", "ownLoginFrame", false);
-			ownCashShopFrame = reader.GetBoolean("optional", "ownCashShopFrame", false);
-			EzorsiaV2WzIncluded = reader.GetBoolean("general", "EzorsiaV2WzIncluded", true);
-			Client::ServerIP_AddressFromINI = ResolveToIpv4String(reader.Get("general", "ServerIP_Address", "127.0.0.1"));
-			Client::serverIP_Port = reader.GetInteger("general", "serverIP_Port", 8484);
-			Client::climbSpeedAuto = reader.GetBoolean("optional", "climbSpeedAuto", false);
-			Client::climbSpeed = reader.GetFloat("optional", "climbSpeed", 1.0);
-			Client::talkRepeat = reader.GetBoolean("optional", "talkRepeat", false);
-			Client::talkTime = reader.GetInteger("optional", "talkTime", 2000);
+			//Client::MsgAmount = reader.GetInteger("general", "MsgAmount", 26);
+			//Client::CustomLoginFrame = reader.GetBoolean("general", "CustomLoginFrame", true);
+			//Client::WindowedMode = reader.GetBoolean("general", "WindowedMode", true);
+			//Client::RemoveLogos = reader.GetBoolean("general", "RemoveLogos", true);
+			//Memory::UseVirtuProtect = reader.GetBoolean("general", "UseVirtuProtect", true);
+			//Client::setDamageCap = static_cast<int>(reader.GetReal("optional", "setDamageCap", 199999));
+			//Client::setMAtkCap = static_cast<int>(reader.GetReal("optional", "setMAtkCap", 1999));
+			//Client::setAccCap = static_cast<int>(reader.GetReal("optional", "setAccCap", 999));
+			//Client::setAvdCap = static_cast<int>(reader.GetReal("optional", "setAvdCap", 999));
+			//Client::setAtkOutCap = reader.GetReal("optional", "setAtkOutCap", 199999);
+			//Client::useTubi = reader.GetBoolean("optional", "useTubi", false);
+			//Client::bigLoginFrame = reader.GetBoolean("general", "bigLoginFrame", false);
+			//Client::SwitchChinese = reader.GetBoolean("general", "SwitchChinese", false);
+			//Client::speedMovementCap = reader.GetInteger("optional", "speedMovementCap", 140);
+			//Client::jumpCap = reader.GetInteger("optional", "jumpCap", 123);
+			//Client::debug = reader.GetBoolean("debug", "debug", false);
+			//Client::noPassword = reader.GetBoolean("debug", "noPassword", false);
+			//Client::imeType = static_cast<unsigned char>(reader.GetInteger("general", "imeType", 1));
+			//ownLoginFrame = reader.GetBoolean("optional", "ownLoginFrame", false);
+			//ownCashShopFrame = reader.GetBoolean("optional", "ownCashShopFrame", false);
+			//EzorsiaV2WzIncluded = reader.GetBoolean("general", "EzorsiaV2WzIncluded", true);
+			//Client::ServerIP_AddressFromINI = ResolveToIpv4String(reader.Get("general", "ServerIP_Address", "127.0.0.1"));
+			//Client::serverIP_Port = reader.GetInteger("general", "serverIP_Port", 8484);
+			//Client::climbSpeedAuto = reader.GetBoolean("optional", "climbSpeedAuto", false);
+			//Client::climbSpeed = reader.GetFloat("optional", "climbSpeed", 1.0);
+			//Client::talkRepeat = reader.GetBoolean("optional", "talkRepeat", false);
+			//Client::talkTime = reader.GetInteger("optional", "talkTime", 2000);
 		}
+
+
+		Client::MsgAmount = 10; // 右下角消息数量
+		Client::CustomLoginFrame = true;
+		Client::WindowedMode = true;
+		Client::RemoveLogos = false; // 跳过开头的动画
+		Memory::UseVirtuProtect = true;
+
+		Client::setDamageCap = 299999;
+		Client::setMAtkCap = 2999;
+		Client::setAccCap = 999;
+		Client::setAvdCap = 999;
+		Client::setAtkOutCap = 299999;
+		Client::useTubi = true;
+		Client::bigLoginFrame = true;
+		Client::SwitchChinese = true;
+		Client::speedMovementCap = 140;
+		Client::jumpCap = 123;
+		Client::climbSpeedAuto = false;
+		Client::climbSpeed = 1.25f;
+
+		Client::debug = false;
+		Client::noPassword = false;
+		ownLoginFrame = false;
+		ownCashShopFrame = false;
+		EzorsiaV2WzIncluded = true;
+
+		Client::talkRepeat = false;
+		Client::talkTime = 2000;
+
+		Client::ServerIP_AddressFromINI = "127.0.0.1";
+		Client::serverIP_Port = 8484;
+
+		//Client::zeroPointArrowFlag = true;
 
 		Hook_CreateMutexA(true); //multiclient //ty darter, angel, and alias!
 		HookCreateWindowExA(true); //default ezorsia
