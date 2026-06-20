@@ -995,7 +995,7 @@ __declspec(naked) void fixMouseWheelHook() {
 	}
 }
 
-// ARRAYS ---- 长键盘开始
+// ARRAYS
 unsigned char Array_aDefaultQKM[] = {
 	42, 0, 0, 0,
 	82, 0, 0, 0,
@@ -1027,6 +1027,8 @@ unsigned char Array_aDefaultQKM[] = {
 };
 
 // 0x00BE2DB0 confirmed, s_ptShortKeyPos
+#pragma warning(push)
+#pragma warning(disable: 4838 4309 4305)
 unsigned char Array_ptShortKeyPos[] = {
 	7, 0, 0, 0,
 	8, 0, 0, 0,
@@ -1084,7 +1086,9 @@ unsigned char Array_ptShortKeyPos[] = {
 //Variant of Array_ptShortKeyPos
 unsigned char Array_ptShortKeyPos_Fixed_Tooltips[] = {
 	7,0,0,0,0,0,0,0,42,0,0,0,0,0,0,0,77,0,0,0,0,0,0,0,112,0,0,0,0,0,0,0,147,0,0,0,0,0,0,0,182,0,0,0,0,0,0,0,217,0,0,0,0,0,0,0,252,0,0,0,0,0,0,0,287,1,0,0,0,0,0,0,322,1,0,0,0,0,0,0,357,1,0,0,0,0,0,0,392,1,0,0,0,0,0,0,427,1,0,0,0,0,0,0,7,0,0,0,33,0,0,0,42,0,0,0,33,0,0,0,77,0,0,0,33,0,0,0,112,0,0,0,33,0,0,0,147,0,0,0,33,0,0,0,182,0,0,0,33,0,0,0,217,0,0,0,33,0,0,0,252,0,0,0,33,0,0,0,287,1,0,0,33,0,0,0,322,1,0,0,33,0,0,0,357,1,0,0,33,0,0,0,392,1,0,0,33,0,0,0,427,1,0,0,33,0,0,0
-};// This array will fix the janky offset of the tooltips
+};
+#pragma warning(pop)
+// This array will fix the janky offset of the tooltips
 // s_aDefaultQKM_0
 unsigned char Array_aDefaultQKM_0[] = {
 	42, 0, 0, 0,
@@ -1315,7 +1319,7 @@ _declspec(naked) void Restore_Array_Expanded() //Thank you Max
 		ret;
 	}
 }
-// 长键盘结束
+// date format fix
 
 
 DWORD fixDateFormatRtnAddr = 0x008EBF65;
@@ -1454,14 +1458,14 @@ __declspec(naked) void chatTextPos()
 		cmp[edi + 0D00h], 2
 		jz label_type2
 
-		label_type1 :        // 状态1 收缩
+		label_type1 :        // type 1
 		sub eax, 1
 		jmp label_rtn
 
-		label_type2 :        // 状态2 收缩 + 输入
+		label_type2 :        // type 2
 		jmp label_rtn
 
-		label_type3 :        // 状态3 展开
+		label_type3 :        // type 3
 		sub eax, 2
 
 		label_rtn :
@@ -1594,7 +1598,7 @@ __declspec(naked) void wordMapUIcc()
 	}
 }
 
-/* 修复技能描述中文换行乱码的问题 */
+/* skill tooltip newline fix */
 constexpr int kSkillTooltipLineBytes = 55;
 constexpr int kSkillTooltipScanBytes = 60;
 
